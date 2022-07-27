@@ -5,6 +5,7 @@ for (let i = 0; i < docSelect.length; i++) {
    docSelect[i].addEventListener("click", function(){
         var buttonValue = this.innerHTML;
         makeSound(buttonValue);
+        buttonPressed(buttonValue);
     })
 }
 
@@ -14,6 +15,7 @@ for (let i = 0; i < docSelect.length; i++) {
 document.addEventListener("keydown", function(event){
     console.log(event);
     makeSound(event.key);
+    buttonPressed(event.key);
 })
 
 
@@ -59,4 +61,11 @@ function makeSound(keyValue){
             break;
     }
 
+}
+
+function buttonPressed(keyValue){
+    document.querySelector("."+keyValue).classList.add("pressed");
+    setTimeout(function(){
+        document.querySelector("."+keyValue).classList.remove("pressed");
+    }, 100);
 }
