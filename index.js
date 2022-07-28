@@ -8,8 +8,24 @@ for (let i = 0; i < docSelect.length; i++) {
         buttonPressed(buttonValue);
     })
 }
+var beatEvent;
+var randomSelect = document.querySelector(".random");
+randomSelect.addEventListener("click", function(){
+    beatEvent = setInterval(randomBeat, 125);
+})
 
+document.querySelector(".beat").addEventListener("click", function(){
+    clearInterval(beatEvent);
+})
 
+function randomBeat(){
+    var arrButton = ['w', 's','j','l', 'a', 'k', 'd'];
+    for (i = 0; i < 1; i++){
+        var randNum = Math.floor(Math.random()*7);
+        makeSound(arrButton[randNum]);
+        buttonPressed(arrButton[randNum])  
+    }
+}
 
 // this protion will detect keyboard press and play sound
 document.addEventListener("keydown", function(event){
